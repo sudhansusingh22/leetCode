@@ -1,0 +1,46 @@
+ class Solution {
+    public boolean isUgly(int num) {
+        if(num<=0) return false;
+        else if(num==1) return true;
+        else{
+            if(num%2==0) return isUgly(num/2);
+            if(num%3==0) return isUgly(num/3);
+            if(num%5==0) return isUgly(num/5);
+        }
+        return false;
+    }
+    
+    public int nthUglyNumber(int num) {
+    	if(num ==0) return 0;
+    	else if(num==1) return 1;
+    	else{
+    		int[] uglyArray = new int[num];
+    		uglyArray[0]=1;
+    		int i=0,j=0,k=0;
+    		int c=1;
+    		while(returnCount(uglyArray)<num){
+    			int mul2 = uglyArray[i]*2;
+    			int mul3 = uglyArray[j]*3;
+    			int mul5 = uglyArray[k]*5;
+    			int min = minimum(mul2, mul3, mul5);
+    			uglyArray[c]=min;
+    			if(min==mul2) i++;
+    			if(min==mul3) j++;
+    			if(min==mul5) k++;
+    			c++;
+    		}
+    		return uglyArray[uglyArray.length-1];
+    	}
+    }
+    int minimum(int x, int y, int z){
+    	int min = x<y?x:y;
+    	return min<z?min:z;
+    }
+    int returnCount(int[] array){
+    	int c=0;
+    	for (int i : array) {
+			if(i!=0) c++;
+		}
+    	return c;
+    }
+}
