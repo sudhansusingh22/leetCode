@@ -1,0 +1,19 @@
+public class Solution {
+    public boolean isHappy(int n) {
+        if(n==1)
+            return true;
+        else if(n==4)
+            return false;
+        else
+            isHappy(happy(n));
+        
+    }
+    public int happy(int n){
+        int sum=0;
+        int count = n.toString().length();
+        for(int i=0;i<count;i++){
+            sum+=n.toString()chatAr(i)*n.toString()chatAr(i);
+        }
+        return sum;
+    }
+}
