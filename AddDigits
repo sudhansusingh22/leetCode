@@ -1,0 +1,7 @@
+public class Solution {
+    public int addDigits(int num) {
+        int temp = (num-1)/9;
+        int x = num-(9*temp);
+        return x;
+    }
+}
