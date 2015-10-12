@@ -1,0 +1,18 @@
+class PrimeNumbers{
+boolean primeOrNot (int num){
+    if(num==0||num==1){
+    	return false;
+    }
+	else if(num>=2) {
+		boolean flag = true;
+		for (int i = 2; i <= Math.sqrt(num);++i) {
+			if(num%i==0){
+				flag = false;
+				break;
+			}
+		}
+		if(flag ==false) return false;
+	}
+    return true;
+}
+}
